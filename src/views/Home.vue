@@ -18,3 +18,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import "@/scss/views/Home.scss"; // Essential SCSS
+
+
+</style>
