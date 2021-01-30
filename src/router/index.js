@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Checkin from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Logout from '../views/Logout.vue'
 import NotFound from '../views/NotFound.vue'
 
 import store from '@/store'
@@ -75,6 +76,24 @@ const routes = [
       }
     },
   },
+  {
+    path: '/logout',
+    name: 'Logout',
+    meta: {
+      title: 'Staff - Logged Out',
+      hideNavigation: true,
+    },
+    component: Logout,
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLoggedIn) {
+        store.dispatch('logout').then(function() {
+          next();
+        });
+      } else {
+        next();
+      }
+    },
+  }
 ]
 
 // Put the 404 not found route at the end.
